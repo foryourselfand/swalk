@@ -33,3 +33,7 @@ sysinfo.txt
 
 *.apk
 *.unitypackage
+Swalk/Assets/Plugins/Editor.meta
+Swalk/Assets/Plugins/Editor/JetBrains.meta
+Swalk/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll
+Swalk/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta
