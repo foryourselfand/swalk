@@ -1,16 +1,36 @@
 using UnityEngine;
 
-public class StateClicker : MonoBehaviour, _Clickable
+public class StateManager : MonoBehaviour, _Clickable
 {
+    public Manipulator manipulator;
+    public static GameState CURRENT_STATE;
+
+    private void Start()
+    {
+        CURRENT_STATE = GameState.STARTING;
+        manipulator.StartingRestart();
+    }
+
+    private void Update()
+    {
+        manipulator.UpdateChangers();
+        switch (CURRENT_STATE)
+        {
+            case GameState.STARTING:
+
+                break;
+        }
+    }
+
     public void ActionOnClick()
     {
-        switch (StateHolder.CURRENT_STATE)
+        switch (CURRENT_STATE)
         {
             case GameState.STARTING:
                 Debug.Log("StateClicker Starting");
-                
+
                 break;
-            
+
             case GameState.MENU:
 
                 Debug.Log("StateClicker MENU");

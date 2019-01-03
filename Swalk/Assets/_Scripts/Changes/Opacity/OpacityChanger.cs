@@ -21,7 +21,7 @@ public class OpacityChanger : Changer
 
     public void TestFunc()
     {
-        StartCoroutine(ChangeOverSeconds(0, 0.5f));
+        StartCoroutine(ChangeOverSeconds(0, 5f));
     }
 
     public IEnumerator ChangeOverSeconds(float end, float seconds)
