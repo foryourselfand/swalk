@@ -2,18 +2,27 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour, _Clickable
 {
-    public Manipulator manipulator;
-    public static GameState CURRENT_STATE;
+    public enum GameState
+    {
+        STARTING,
+        MENU,
+        TOPIC,
+        PLAY,
+        ADS,
+        OVER,
+        ENDING
+    }
 
+    public ComponentsManager ComponentsManager;
+    public static GameState CURRENT_STATE;
+    
     private void Start()
     {
         CURRENT_STATE = GameState.STARTING;
-        manipulator.StartingRestart();
     }
 
     private void Update()
     {
-        manipulator.UpdateChangers();
         switch (CURRENT_STATE)
         {
             case GameState.STARTING:
