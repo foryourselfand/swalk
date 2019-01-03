@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonIAP: {fileID: 0}
+  ButtonIAP: {fileID: 892445230}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bf231cbc834e72b3269deec73ad538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ComponentsManager: {fileID: 438813027}
 --- !u!114 &495347741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2182,7 +2181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bf231cbc834e72b3269deec73ad538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ComponentsManager: {fileID: 438813027}
 --- !u!1 &2125996260
 GameObject:
   m_ObjectHideFlags: 0
