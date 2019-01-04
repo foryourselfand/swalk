@@ -18,6 +18,10 @@ public abstract class PositionChanger : Changer
         startingVector = vectorLink;
         endingVector = endValue;
         StartCoroutine(ChangeOverSeconds(seconds));
+    }
+
+    public override void endSetUp()
+    {
         vectorLink = endingVector;
     }
 }

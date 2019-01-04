@@ -7,6 +7,15 @@ public abstract class Changer : MonoBehaviour
 
     public abstract void Change(float time);
 
+//    public IEnumerator ChangeOverSpeed(Vector3 endVector, float speed)
+//    {
+//        while (transform.position != endVector)
+//        {
+//            transform.position = Vector3.MoveTowards(transform.position, endVector, speed * Time.deltaTime);
+//            yield return new WaitForEndOfFrame();
+//        }
+//    }
+
     public IEnumerator ChangeOverSeconds(float seconds)
     {
         isDone = false;
@@ -19,6 +28,11 @@ public abstract class Changer : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        endSetUp();
         isDone = true;
+    }
+
+    public virtual void endSetUp()
+    {
     }
 }
