@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PositionSharp : PositionChange
+public class PositionSharp : PositionChanger
 {
-    public override void Change(Vector3 startingPosition, Vector3 endingPosition, float speedValue)
+    public override void Change(float time)
     {
-        transformLink.position = Vector3.MoveTowards(startingPosition, endingPosition, speedValue);
+        vectorLink = Vector3.MoveTowards(startingVector, endingVector, time);
     }
 }

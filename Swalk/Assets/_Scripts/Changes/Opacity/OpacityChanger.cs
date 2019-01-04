@@ -4,29 +4,26 @@ using UnityEngine;
 public class OpacityChanger : Changer
 {
     private CanvasGroup canvasGroupLink;
-    private IEnumerator temp;
+
+    private float startingAlpha;
+    private float endingAlpha;
 
     private void Awake()
     {
         canvasGroupLink = gameObject.GetComponent<CanvasGroup>();
     }
 
-    public void TestFunc()
+    public void ChangeAlphaOverSeconds(float seconds, float endValue)
     {
-        StartMagic(ChangeOverSeconds(0, 5));
+        startingAlpha = canvasGroupLink.alpha;
+        endingAlpha = endValue;
+        StartCoroutine(ChangeOverSeconds(seconds));
+        canvasGroupLink.alpha = endingAlpha;
+        Debug.Log("I'm here");
     }
 
-    public IEnumerator ChangeOverSeconds(float end, float seconds)
+    public override void Change(float time)
     {
-        float elapsedTime = 0;
-        float startingAlpha = canvasGroupLink.alpha;
-        while (elapsedTime < seconds)
-        {
-            canvasGroupLink.alpha = Mathf.Lerp(startingAlpha, end, elapsedTime / seconds);
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-
-        canvasGroupLink.alpha = end;
+        canvasGroupLink.alpha = Mathf.Lerp(startingAlpha, endingAlpha, time);
     }
 }

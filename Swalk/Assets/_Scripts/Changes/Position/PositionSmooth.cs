@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class PositionSmooth : PositionChange
+public class PositionSmooth : PositionChanger
 {
-    public override void Change(Vector3 startingPosition, Vector3 endingPosition, float speedValue)
+    public override void Change(float time)
     {
-        transform.position = Vector3.Lerp(startingPosition, endingPosition, speedValue);
+        vectorLink = Vector3.Lerp(startingVector, endingVector, time);
     }
 }

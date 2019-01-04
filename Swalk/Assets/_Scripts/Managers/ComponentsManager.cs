@@ -6,6 +6,6 @@ public class ComponentsManager : MonoBehaviour
 
     private void Start()
     {
-        ButtonIAP.TestFunc();
+        ButtonIAP.ChangeAlphaOverSeconds(5, 0);
     }
 }
