@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonIAP: {fileID: 1503540165}
+  startButtonsGroup: {fileID: 1503540165}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeff6d43af7b4e2cad726d0668243365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDone: 0
+  speed: 1
 --- !u!1 &1636721708
 GameObject:
   m_ObjectHideFlags: 0

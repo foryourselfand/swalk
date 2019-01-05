@@ -1,27 +1,37 @@
-using System.Collections;
 using UnityEngine;
 
 public abstract class PositionChanger : Changer
 {
-    protected Vector3 vectorLink;
+    protected Transform transformLink;
 
-    protected Vector3 startingVector;
-    protected Vector3 endingVector;
+    protected Vector3 startVector;
+    protected Vector3 targetVector;
+
 
     private void Awake()
     {
-        vectorLink = gameObject.transform.position;
+        transformLink = gameObject.transform;
     }
 
-    public void ChangeAlphaOverSeconds(float seconds, Vector3 endValue)
+    public void ChangeVector()
     {
-        startingVector = vectorLink;
-        endingVector = endValue;
-        StartCoroutine(ChangeOverSeconds(seconds));
+        startVector = transformLink.position;
+        StartCoroutine(ChangeOverSpeed());
     }
 
+    public override bool CheckTargetRich()
+    {
+        return transformLink.position == targetVector;
+    }
     public override void endSetUp()
     {
-        vectorLink = endingVector;
+        transformLink.position = targetVector;
+    }
+
+    public void TestMoving(float seconds)
+    {
+        targetVector = transformLink.position;
+        transformLink.position += new Vector3(0, 100, 0);
+        ChangeVector();
     }
 }

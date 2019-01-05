@@ -3,28 +3,20 @@ using UnityEngine;
 
 public abstract class Changer : MonoBehaviour
 {
-    public bool isDone;
+    public float speed;
 
-    public abstract void Change(float time);
+    [HideInInspector] public bool isDone;
 
-//    public IEnumerator ChangeOverSpeed(Vector3 endVector, float speed)
-//    {
-//        while (transform.position != endVector)
-//        {
-//            transform.position = Vector3.MoveTowards(transform.position, endVector, speed * Time.deltaTime);
-//            yield return new WaitForEndOfFrame();
-//        }
-//    }
+    public abstract bool CheckTargetRich();
 
-    public IEnumerator ChangeOverSeconds(float seconds)
+    public abstract void Change(float t);
+
+    public IEnumerator ChangeOverSpeed()
     {
         isDone = false;
-
-        float elapsedTime = 0;
-        while (elapsedTime < seconds)
+        while (!CheckTargetRich())
         {
-            Change(elapsedTime / seconds);
-            elapsedTime += Time.deltaTime;
+            Change(speed * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
 

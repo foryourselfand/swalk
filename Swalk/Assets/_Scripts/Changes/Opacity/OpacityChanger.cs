@@ -1,32 +1,37 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
-public class OpacityChanger : Changer
+public class OpacityChanger : MonoBehaviour
 {
+    public float speed;
+
     private CanvasGroup canvasGroupLink;
 
-    private float startingAlpha;
-    private float endingAlpha;
+    private float startAlpha;
+    private float targetAlpha;
 
     private void Awake()
     {
         canvasGroupLink = gameObject.GetComponent<CanvasGroup>();
     }
 
-    public override void Change(float time)
+    public void SetTarget(float endAlpha)
     {
-        canvasGroupLink.alpha = Mathf.Lerp(startingAlpha, endingAlpha, time);
+        startAlpha = canvasGroupLink.alpha;
+        targetAlpha = endAlpha;
     }
 
-    public void ChangeAlphaOverSeconds(float seconds, float endValue)
+    private void Update()
     {
-        startingAlpha = canvasGroupLink.alpha;
-        endingAlpha = endValue;
-        StartCoroutine(ChangeOverSeconds(seconds));
-    }
-
-    public override void endSetUp()
-    {
-        canvasGroupLink.alpha = endingAlpha;
+        if (Math.Abs(canvasGroupLink.alpha - targetAlpha) > 0.1)
+        {
+            canvasGroupLink.alpha = Mathf.Lerp(canvasGroupLink.alpha, targetAlpha, speed * Time.deltaTime);
+        }
+        else
+        {
+            canvasGroupLink.alpha = targetAlpha;
+            if (targetAlpha == 0)
+                gameObject.SetActive(false);
+        }
     }
 }
