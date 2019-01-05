@@ -1,10 +1,8 @@
 using System;
 using UnityEngine;
 
-public class OpacityChanger : MonoBehaviour
+public class OpacityChanger : Changer
 {
-    public float speed;
-
     private CanvasGroup _canvasGroupLink;
 
     private float _targetAlpha;
@@ -17,25 +15,31 @@ public class OpacityChanger : MonoBehaviour
     private void Start()
     {
         _canvasGroupLink.alpha = 0;
-        _targetAlpha = 1;
+        SetTarget(1);
+    }
+
+    protected override bool CheckWithTolerance(float tolerance)
+    {
+        return Math.Abs(_canvasGroupLink.alpha - _targetAlpha) > tolerance;
+    }
+
+    protected override void Change(float time)
+    {
+        _canvasGroupLink.alpha = Mathf.Lerp(_canvasGroupLink.alpha, _targetAlpha, time);
+    }
+
+    protected override void ActionOnEnd()
+    {
+        Debug.Log("OpacityChanger ActionOnEnd");
+        _canvasGroupLink.alpha = _targetAlpha;
+        if (_targetAlpha == 0)
+            gameObject.SetActive(false);
     }
 
     public void SetTarget(float targetAlpha)
     {
+        Debug.Log("SetTarget");
+        changing = true;
         _targetAlpha = targetAlpha;
-    }
-
-    private void Update()
-    {
-        if (Math.Abs(_canvasGroupLink.alpha - _targetAlpha) > 0.01)
-        {
-            _canvasGroupLink.alpha = Mathf.Lerp(_canvasGroupLink.alpha, _targetAlpha, speed * Time.deltaTime);
-        }
-        else
-        {
-            _canvasGroupLink.alpha = _targetAlpha;
-            if (_targetAlpha == 0)
-                gameObject.SetActive(false);
-        }
     }
 }
