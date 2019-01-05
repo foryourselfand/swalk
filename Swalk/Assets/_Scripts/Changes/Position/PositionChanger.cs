@@ -1,37 +1,44 @@
+using System;
 using UnityEngine;
 
-public abstract class PositionChanger : Changer
+public abstract class PositionChanger : MonoBehaviour
 {
-    protected Transform transformLink;
+    public float speed;
 
-    protected Vector3 startVector;
-    protected Vector3 targetVector;
+    protected Transform _transformLink;
 
+    protected Vector3 _targetVector;
+
+    private const float Tolerance = 0.1f;
+
+    private bool _changing;
 
     private void Awake()
     {
-        transformLink = gameObject.transform;
+        _transformLink = gameObject.transform;
     }
 
-    public void ChangeVector()
+    public abstract void Change(float t);
+
+    private void Update()
     {
-        startVector = transformLink.position;
-        StartCoroutine(ChangeOverSpeed());
+        if (!_changing) return;
+        if (Vector3.SqrMagnitude(_transformLink.position - _targetVector) > Tolerance)
+        {
+            Change(speed * Time.deltaTime);
+        }
+        else
+        {
+            Debug.Log("End");
+            _changing = false;
+            _transformLink.position = _targetVector;
+        }
     }
 
-    public override bool CheckTargetRich()
+    public void TestMoving()
     {
-        return transformLink.position == targetVector;
-    }
-    public override void endSetUp()
-    {
-        transformLink.position = targetVector;
-    }
-
-    public void TestMoving(float seconds)
-    {
-        targetVector = transformLink.position;
-        transformLink.position += new Vector3(0, 100, 0);
-        ChangeVector();
+        _changing = true;
+        _targetVector = _transformLink.position;
+        _transformLink.position += new Vector3(0, 100, 0);
     }
 }

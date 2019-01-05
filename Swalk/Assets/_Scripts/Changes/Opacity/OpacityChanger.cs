@@ -5,32 +5,36 @@ public class OpacityChanger : MonoBehaviour
 {
     public float speed;
 
-    private CanvasGroup canvasGroupLink;
+    private CanvasGroup _canvasGroupLink;
 
-    private float startAlpha;
-    private float targetAlpha;
+    private float _targetAlpha;
 
     private void Awake()
     {
-        canvasGroupLink = gameObject.GetComponent<CanvasGroup>();
+        _canvasGroupLink = gameObject.GetComponent<CanvasGroup>();
     }
 
-    public void SetTarget(float endAlpha)
+    private void Start()
     {
-        startAlpha = canvasGroupLink.alpha;
-        targetAlpha = endAlpha;
+        _canvasGroupLink.alpha = 0;
+        _targetAlpha = 1;
+    }
+
+    public void SetTarget(float targetAlpha)
+    {
+        _targetAlpha = targetAlpha;
     }
 
     private void Update()
     {
-        if (Math.Abs(canvasGroupLink.alpha - targetAlpha) > 0.1)
+        if (Math.Abs(_canvasGroupLink.alpha - _targetAlpha) > 0.01)
         {
-            canvasGroupLink.alpha = Mathf.Lerp(canvasGroupLink.alpha, targetAlpha, speed * Time.deltaTime);
+            _canvasGroupLink.alpha = Mathf.Lerp(_canvasGroupLink.alpha, _targetAlpha, speed * Time.deltaTime);
         }
         else
         {
-            canvasGroupLink.alpha = targetAlpha;
-            if (targetAlpha == 0)
+            _canvasGroupLink.alpha = _targetAlpha;
+            if (_targetAlpha == 0)
                 gameObject.SetActive(false);
         }
     }

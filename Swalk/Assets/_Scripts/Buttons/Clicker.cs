@@ -13,7 +13,7 @@ public class Clicker : MonoBehaviour
 
     public void ActionOnClick()
     {
-        if (canvasGroupLink.alpha >= 0.9)
+        if (canvasGroupLink.alpha >= 0.99f)
             clickableLink.ActionOnClick();
     }
 }

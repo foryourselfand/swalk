@@ -882,6 +882,7 @@ GameObject:
   - component: {fileID: 892445223}
   - component: {fileID: 892445227}
   - component: {fileID: 892445226}
+  - component: {fileID: 892445228}
   m_Layer: 5
   m_Name: IAP Button
   m_TagString: Untagged
@@ -1016,6 +1017,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9898953eaed24edd9d4eca785886df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &892445228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892445221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1036230130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeff6d43af7b4e2cad726d0668243365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
 --- !u!1 &1636721708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1379,7 @@ GameObject:
   - component: {fileID: 1636721710}
   - component: {fileID: 1636721714}
   - component: {fileID: 1636721713}
+  - component: {fileID: 1636721715}
   m_Layer: 5
   m_Name: Rating Button
   m_TagString: Untagged
@@ -1500,6 +1514,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9898953eaed24edd9d4eca785886df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1636721715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636721708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1668774999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1572,7 @@ GameObject:
   - component: {fileID: 1681718707}
   - component: {fileID: 1681718711}
   - component: {fileID: 1681718710}
+  - component: {fileID: 1681718712}
   m_Layer: 5
   m_Name: Sound Button
   m_TagString: Untagged
@@ -1680,6 +1707,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9898953eaed24edd9d4eca785886df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1681718712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681718705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1803740713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1904,7 @@ GameObject:
   - component: {fileID: 1878919935}
   - component: {fileID: 1878919939}
   - component: {fileID: 1878919938}
+  - component: {fileID: 1878919940}
   m_Layer: 5
   m_Name: Shop Button
   m_TagString: Untagged
@@ -1999,6 +2039,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9898953eaed24edd9d4eca785886df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1878919940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1878919933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1913710838
 GameObject:
   m_ObjectHideFlags: 0
