@@ -6,7 +6,9 @@ public class ComponentsManager : MonoBehaviour
 
 //    private PositionSmooth[] startButtons;
 
-    public PositionTransformChanger button;
+    public PositionRectChanger RectButton;
+    public PositionTransformChanger TransformButton;
+
 
     private void Awake()
     {
@@ -21,7 +23,8 @@ public class ComponentsManager : MonoBehaviour
 //        startButtonsGroup.gameObject.SetActive(false);
 
 //        StartAction();
-        button.TestMoving();
+        RectButton.TestRect();
+        TransformButton.TestTrans();
     }
 
     private void StartAction()

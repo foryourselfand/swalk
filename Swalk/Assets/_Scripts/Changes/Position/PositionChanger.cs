@@ -33,11 +33,21 @@ public abstract class PositionChanger : Changer
         Debug.Log("PositionChanger ActionOnEnd");
         VectorLink = _targetVector;
     }
-
-    public void TestMoving()
+    
+    
+    public void TestRect()
     {
         changing = true;
         _targetVector = VectorLink;
-        VectorLink += new Vector2(10, 100);
+        Debug.Log(VectorLink.ToString());
+        Debug.Log(_targetVector.ToString());
+//        VectorLink += Vector2.right; 
+    }
+
+    public void TestTrans()
+    {
+        changing = true;
+        _targetVector = VectorLink;
+        VectorLink += Vector2.right; 
     }
 }

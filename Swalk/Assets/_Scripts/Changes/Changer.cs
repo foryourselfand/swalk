@@ -4,7 +4,7 @@ public abstract class Changer : MonoBehaviour
 {
     public float speed;
 
-    private const float Tolerance = 0.01f;
+    private const float Tolerance = Vector2.kEpsilon;
 
     protected bool changing;
 

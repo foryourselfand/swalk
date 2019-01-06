@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PositionTransformChanger : PositionChanger
+public class PositionRectChanger : PositionChanger
 {
     private Transform _transformLink;
 
@@ -11,6 +11,6 @@ public class PositionTransformChanger : PositionChanger
 
     protected override void setLink(Vector2 value)
     {
-        _transformLink.localPosition = new Vector3(value.x, _transformLink.position.y, value.y);
+        _transformLink.position = new Vector2(value.x, value.y);
     }
 }
