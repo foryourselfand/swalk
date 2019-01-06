@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 19985488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 1668775000}
@@ -385,7 +385,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 324422500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 1668775000}
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButtonsGroup: {fileID: 1503540165}
+  button: {fileID: 892445228}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0
@@ -734,7 +734,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 596767470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.5}
+  m_LocalPosition: {x: 0, y: 0, z: -2.5}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 1668775000}
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 892445221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 237308cfe4fb46738d2ce754b840497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
@@ -1054,7 +1054,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1036230130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
   m_Father: {fileID: 1668775000}
@@ -1313,7 +1313,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1503540163}
   - component: {fileID: 1503540164}
-  - component: {fileID: 1503540165}
   m_Layer: 5
   m_Name: Start Buttons
   m_TagString: Untagged
@@ -1354,18 +1353,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1503540165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1503540162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeff6d43af7b4e2cad726d0668243365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!1 &1636721708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1509,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636721708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 237308cfe4fb46738d2ce754b840497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
@@ -1715,7 +1702,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1681718705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 237308cfe4fb46738d2ce754b840497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
@@ -2047,7 +2034,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1878919933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e4a4ae89e7e4828a473ff78b9b934e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 237308cfe4fb46738d2ce754b840497d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5

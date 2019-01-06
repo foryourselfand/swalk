@@ -38,7 +38,6 @@ public class OpacityChanger : Changer
 
     public void SetTarget(float targetAlpha)
     {
-        Debug.Log("SetTarget");
         changing = true;
         _targetAlpha = targetAlpha;
     }
