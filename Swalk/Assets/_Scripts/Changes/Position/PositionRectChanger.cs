@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class PositionRectChanger : PositionChanger
 {
+    private RectTransform _rectLink;
+
     private void Awake()
     {
-        _transformLink = GetComponent<Transform>();
+        _rectLink = GetComponent<RectTransform>();
     }
 
-    protected override void setLink(Vector3 value)
+    protected override void setLink(Vector2 value)
     {
-        _transformLink.position = new Vector3(value.x, value.y, _transformLink.position.z);
+        _rectLink.anchoredPosition = new Vector2(value.x * 50, value.y * 50);
     }
+
+//    protected override Vector2 getLink()
+//    {
+//        return _rectLink.pivot;
+//    }
 }

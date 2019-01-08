@@ -2,50 +2,56 @@ using UnityEngine;
 
 public abstract class PositionChanger : Changer
 {
-    protected Vector3 _targetVector;
+    protected Vector2 _targetVector;
 
-    protected Transform _transformLink;
+    protected Vector2 _positionLink;
 
-    public Transform TransformLink
+    public Vector2 PositionLink
     {
-        get { return _transformLink; }
+        get
+        {
+//            _positionLink = getLink();
+            return _positionLink;
+        }
         set
         {
-            _transformLink = value;
-            setLink(_transformLink.position);
+            _positionLink = value;
+            setLink(_positionLink);
         }
     }
 
-    protected abstract void setLink(Vector3 value);
+    protected abstract void setLink(Vector2 value);
+
+//    protected abstract Vector2 getLink();
 
     protected override bool CheckWithTolerance(float tolerance)
     {
-        return Vector3.SqrMagnitude(TransformLink.position - _targetVector) > tolerance;
+        return Vector2.SqrMagnitude(PositionLink - _targetVector) > tolerance;
     }
 
     protected override void Change(float t)
     {
-        TransformLink.position = Vector3.Lerp(TransformLink.position, _targetVector, t);
+        PositionLink = Vector2.Lerp(PositionLink, _targetVector, t);
     }
 
     protected override void ActionOnEnd()
     {
         Debug.Log("PositionChanger ActionOnEnd");
-        TransformLink.position = _targetVector;
+        PositionLink = _targetVector;
     }
     
     
     public void TestRect()
     {
         changing = true;
-        _targetVector = TransformLink.position;
-        TransformLink.position += new Vector3(0, 100);  
+        _targetVector = PositionLink;
+        PositionLink += new Vector2(1, 0);  
     }
 
     public void TestTrans()
     {
         changing = true;
-        _targetVector = TransformLink.position;
-        TransformLink.position += Vector3.right; 
+        _targetVector = PositionLink;
+        PositionLink += new Vector2(1, 0); 
     }
 }
