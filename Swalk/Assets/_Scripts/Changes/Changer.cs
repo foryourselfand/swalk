@@ -4,15 +4,13 @@ public abstract class Changer : MonoBehaviour
 {
     public float speed;
 
-    private const float Tolerance = Vector2.kEpsilon;
-
     protected bool changing;
 
     private void Update()
     {
         if (!changing) return;
 
-        if (CheckWithTolerance(Tolerance))
+        if (CheckWithTolerance())
         {
             Change(speed * Time.deltaTime);
         }
@@ -23,7 +21,7 @@ public abstract class Changer : MonoBehaviour
         }
     }
 
-    protected abstract bool CheckWithTolerance(float tolerance);
+    protected abstract bool CheckWithTolerance();
 
     protected abstract void Change(float time);
 

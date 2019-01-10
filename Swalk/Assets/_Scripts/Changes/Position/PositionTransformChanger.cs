@@ -13,9 +13,4 @@ public class PositionTransformChanger : PositionChanger
     {
         _transformLink.position = new Vector3(value.x, _transformLink.position.y, value.y);
     }
-
-//    protected override Vector2 getLink()
-//    {
-//        return _transformLink.position;
-//    }
 }

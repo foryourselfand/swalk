@@ -8,11 +8,7 @@ public abstract class PositionChanger : Changer
 
     public Vector2 PositionLink
     {
-        get
-        {
-//            _positionLink = getLink();
-            return _positionLink;
-        }
+        private get { return _positionLink; }
         set
         {
             _positionLink = value;
@@ -20,13 +16,18 @@ public abstract class PositionChanger : Changer
         }
     }
 
+    public void SetVectorTarget(Vector2 targetVector)
+    {
+        changing = true;
+        _targetVector = PositionLink;
+        PositionLink += targetVector;
+    }
+
     protected abstract void setLink(Vector2 value);
 
-//    protected abstract Vector2 getLink();
-
-    protected override bool CheckWithTolerance(float tolerance)
+    protected override bool CheckWithTolerance()
     {
-        return Vector2.SqrMagnitude(PositionLink - _targetVector) > tolerance;
+        return Vector2.SqrMagnitude(PositionLink - _targetVector) > Vector2.kEpsilon;
     }
 
     protected override void Change(float t)
@@ -38,20 +39,5 @@ public abstract class PositionChanger : Changer
     {
         Debug.Log("PositionChanger ActionOnEnd");
         PositionLink = _targetVector;
-    }
-    
-    
-    public void TestRect()
-    {
-        changing = true;
-        _targetVector = PositionLink;
-        PositionLink += new Vector2(1, 0);  
-    }
-
-    public void TestTrans()
-    {
-        changing = true;
-        _targetVector = PositionLink;
-        PositionLink += new Vector2(1, 0); 
     }
 }
