@@ -16,11 +16,28 @@ public abstract class PositionChanger : Changer
         }
     }
 
-    public void SetVectorTarget(Vector2 targetVector)
+    private float lastX, lastY;
+
+    public void SetVectorTarget(Vector2 targetVector, bool needToMove)
     {
         changing = true;
-        _targetVector = PositionLink;
+        lastX = targetVector.x;
+        lastY = targetVector.y;
+        _targetVector = PositionLink + targetVector;
+        if (!needToMove) return;
+        _targetVector -= targetVector;
         PositionLink += targetVector;
+    }
+
+    public void SetVectorTarget(Vector2 targetVector)
+    {
+        SetVectorTarget(targetVector, false);
+    }
+
+    public void SetClockwiseTarget()
+    {
+        Debug.Log("Fuck");
+        SetVectorTarget(new Vector2(lastX, lastY));
     }
 
     protected abstract void setLink(Vector2 value);

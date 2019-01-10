@@ -472,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RectButton: {fileID: 892445228}
-  TransformButton: {fileID: 1803740718}
+  startButtonsGroup: {fileID: 1503540165}
+  middleButton: {fileID: 1803740718}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0
@@ -1314,6 +1314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1503540163}
   - component: {fileID: 1503540164}
+  - component: {fileID: 1503540165}
   m_Layer: 5
   m_Name: Start Buttons
   m_TagString: Untagged
@@ -1354,6 +1355,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1503540165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1503540162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeff6d43af7b4e2cad726d0668243365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1636721708
 GameObject:
   m_ObjectHideFlags: 0
