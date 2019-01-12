@@ -36,11 +36,18 @@ public abstract class PositionChanger : Changer
 
     public void SetClockwiseTarget()
     {
-        Debug.Log("Fuck");
         SetVectorTarget(new Vector2(lastX, lastY));
     }
 
     protected abstract void setLink(Vector2 value);
+
+
+    protected override void ActionOnEnd()
+    {
+        Debug.Log(string.Format("///{0} position///", name));
+        PositionLink = _targetVector;
+        elapsedTime = 0;
+    }
 
     protected override bool CheckWithTolerance()
     {
@@ -49,12 +56,24 @@ public abstract class PositionChanger : Changer
 
     protected override void Change(float t)
     {
-        PositionLink = Vector2.Lerp(PositionLink, _targetVector, t);
+        PositionLink = Vector2.MoveTowards(PositionLink, _targetVector, t);
     }
 
-    protected override void ActionOnEnd()
+//    var value = (speed * (elapsedTime) - 1);
+    private float elapsedTime;
+
+    protected override void ChangeSpeed()
     {
-        Debug.Log("PositionChanger ActionOnEnd");
-        PositionLink = _targetVector;
+        elapsedTime += Time.deltaTime;
+        var qqq = speed * elapsedTime;
+        var www = Vector2.SqrMagnitude(PositionLink - _targetVector);
+        var eee = www / qqq;
+//        speed -= value;
+        Debug.Log(string.Format("{0}\t{1}\t{2}", qqq.ToString(), www.ToString(), eee.ToString()));
+
+        if (Vector2.SqrMagnitude(PositionLink - _targetVector) < 0.25)
+        {
+            speed -= eee;
+        }
     }
 }

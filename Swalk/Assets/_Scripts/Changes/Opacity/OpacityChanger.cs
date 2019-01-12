@@ -14,7 +14,7 @@ public class OpacityChanger : Changer
 
     private void Start()
     {
-        _canvasGroupLink.alpha = 0;
+//        _canvasGroupLink.alpha = 0;
     }
 
     public void SetOpacityTarget(float targetOpacity)
@@ -30,12 +30,12 @@ public class OpacityChanger : Changer
 
     protected override void Change(float time)
     {
-        _canvasGroupLink.alpha = Mathf.Lerp(_canvasGroupLink.alpha, _targetAlpha, time);
+        _canvasGroupLink.alpha = Mathf.MoveTowards(_canvasGroupLink.alpha, _targetAlpha, time);
     }
 
     protected override void ActionOnEnd()
     {
-        Debug.Log("OpacityChanger ActionOnEnd");
+        Debug.Log(string.Format("{0} opacity", name));
         _canvasGroupLink.alpha = _targetAlpha;
         if (_targetAlpha == 0)
             gameObject.SetActive(false);

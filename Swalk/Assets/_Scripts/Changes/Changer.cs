@@ -13,6 +13,7 @@ public abstract class Changer : MonoBehaviour
         if (CheckWithTolerance())
         {
             Change(speed * Time.deltaTime);
+            ChangeSpeed();
         }
         else
         {
@@ -26,4 +27,8 @@ public abstract class Changer : MonoBehaviour
     protected abstract void Change(float time);
 
     protected abstract void ActionOnEnd();
+
+    protected virtual void ChangeSpeed()
+    {
+    }
 }
