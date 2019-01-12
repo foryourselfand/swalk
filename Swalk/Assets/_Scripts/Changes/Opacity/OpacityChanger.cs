@@ -14,7 +14,7 @@ public class OpacityChanger : Changer
 
     private void Start()
     {
-//        _canvasGroupLink.alpha = 0;
+        _canvasGroupLink.alpha = 0;
     }
 
     public void SetOpacityTarget(float targetOpacity)

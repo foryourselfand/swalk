@@ -54,26 +54,21 @@ public abstract class PositionChanger : Changer
         return Vector2.SqrMagnitude(PositionLink - _targetVector) > Vector2.kEpsilon;
     }
 
+    private float elapsedTime = 0;
+    private float secondToLerp = 1;
+    
+    private Vector2 velocity = Vector2.zero;
+
     protected override void Change(float t)
     {
-        PositionLink = Vector2.MoveTowards(PositionLink, _targetVector, t);
-    }
-
-//    var value = (speed * (elapsedTime) - 1);
-    private float elapsedTime;
-
-    protected override void ChangeSpeed()
-    {
-        elapsedTime += Time.deltaTime;
-        var qqq = speed * elapsedTime;
-        var www = Vector2.SqrMagnitude(PositionLink - _targetVector);
-        var eee = www / qqq;
-//        speed -= value;
-        Debug.Log(string.Format("{0}\t{1}\t{2}", qqq.ToString(), www.ToString(), eee.ToString()));
-
-        if (Vector2.SqrMagnitude(PositionLink - _targetVector) < 0.25)
-        {
-            speed -= eee;
-        }
+//        elapsedTime += Time.deltaTime / secondToLerp;
+//        elapsedTime += Time.deltaTime;
+//        Debug.Log(elapsedTime.ToString());
+//        PositionLink = Vector2.Lerp(PositionLink, _targetVector, elapsedTime);
+        
+        ////////////////////////////////////////
+        PositionLink = Vector2.SmoothDamp(PositionLink, _targetVector, ref velocity, 0.2F);
+        
+        
     }
 }
