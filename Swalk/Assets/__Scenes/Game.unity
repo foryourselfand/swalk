@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButtonsGroup: {fileID: 1503540165}
   middleButton: {fileID: 1803740718}
 --- !u!4 &438813028
 Transform:
@@ -1816,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680d77038b0a474e93d38dc418b4b915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
 --- !u!1 &1804706743
 GameObject:
   m_ObjectHideFlags: 0
