@@ -18,6 +18,8 @@ public abstract class PositionChanger : Changer
 
     private float lastX, lastY;
 
+    private bool fromSlow;
+
     public void SetVectorTarget(Vector2 targetVector, bool needToMove)
     {
         changing = true;
@@ -46,29 +48,33 @@ public abstract class PositionChanger : Changer
     {
         Debug.Log(string.Format("///{0} position///", name));
         PositionLink = _targetVector;
+        fromSlow = true;
         elapsedTime = 0;
     }
+
 
     protected override bool CheckWithTolerance()
     {
         return Vector2.SqrMagnitude(PositionLink - _targetVector) > Vector2.kEpsilon;
     }
 
-    private float elapsedTime = 0;
-    private float secondToLerp = 1;
-    
     private Vector2 velocity = Vector2.zero;
+
+    private float elapsedTime;
+
 
     protected override void Change(float t)
     {
-//        elapsedTime += Time.deltaTime / secondToLerp;
-//        elapsedTime += Time.deltaTime;
-//        Debug.Log(elapsedTime.ToString());
-//        PositionLink = Vector2.Lerp(PositionLink, _targetVector, elapsedTime);
-        
-        ////////////////////////////////////////
-        PositionLink = Vector2.SmoothDamp(PositionLink, _targetVector, ref velocity, 0.2F);
-        
-        
+//        PositionLink = Vector2.SmoothDamp(PositionLink, _targetVector, ref velocity, 0.1f * speed);
+
+        if (!fromSlow)
+        {
+            PositionLink = Vector2.Lerp(PositionLink, _targetVector, Time.deltaTime * speed);
+        }
+        else
+        {
+            elapsedTime += Time.deltaTime / speed;
+            PositionLink = Vector2.Lerp(PositionLink, _targetVector, elapsedTime);
+        }
     }
 }

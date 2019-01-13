@@ -29,7 +29,7 @@ public class ComponentsManager : MonoBehaviour
         startButtonsGroup.SetOpacityTarget(1);
 
 
-        middleButton.SetVectorTarget(new Vector2(0, 1), true);
+        middleButton.SetVectorTarget(new Vector2(0, 2), true);
 
 
         startButtons[0].SetVectorTarget(new Vector2(-1, 0), true);
@@ -43,14 +43,15 @@ public class ComponentsManager : MonoBehaviour
 
         startButtons[startButtons.Length - 1].SetVectorTarget(new Vector2(1, 0), true);
 
-        Invoke("TestFunc", 5);
+        Invoke("TestFunc", 3F);
     }
 
     public void TestFunc()
     {
-
         middleButton.SetClockwiseTarget();
         startButtons[0].SetClockwiseTarget();
+
         startButtons[startButtons.Length - 1].SetClockwiseTarget();
+        startButtonsGroup.SetOpacityTarget(0);
     }
 }
