@@ -2,22 +2,21 @@ using UnityEngine;
 
 public abstract class Changer : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] protected float speed;
 
-    protected bool changing;
+    protected bool Changing;
 
     private void Update()
     {
-        if (!changing) return;
+        if (!Changing) return;
 
         if (CheckWithTolerance())
         {
             Change(speed * Time.deltaTime);
-            ChangeSpeed();
         }
         else
         {
-            changing = false;
+            Changing = false;
             ActionOnEnd();
         }
     }
@@ -27,8 +26,4 @@ public abstract class Changer : MonoBehaviour
     protected abstract void Change(float time);
 
     protected abstract void ActionOnEnd();
-
-    protected virtual void ChangeSpeed()
-    {
-    }
 }

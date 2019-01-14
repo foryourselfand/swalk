@@ -17,15 +17,7 @@ public class OpacityChanger : Changer
         _canvasGroupLink.alpha = 0;
     }
 
-    public void SetOpacityTarget(float targetOpacity)
-    {
-        changing = true;
-        _targetAlpha = targetOpacity;
-
-        #if DEBUG_PRINT
-        Debug.Log(string.Format("Opacity\t{0}\tSTART", name));
-        #endif
-    }
+    #region CHANGER
 
     protected override bool CheckWithTolerance()
     {
@@ -40,12 +32,24 @@ public class OpacityChanger : Changer
     protected override void ActionOnEnd()
     {
         _canvasGroupLink.alpha = _targetAlpha;
-        if (_targetAlpha == 0)
-            gameObject.SetActive(false);
+//        if (_targetAlpha == 0)
+//            gameObject.SetActive(false);
 
 
         #if DEBUG_PRINT
         Debug.Log(string.Format("Opacity\t{0}\tEND", name));
+        #endif
+    }
+
+    #endregion
+
+    public void SetOpacityTarget(float targetOpacity)
+    {
+        Changing = true;
+        _targetAlpha = targetOpacity;
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("Opacity\t{0}\tSTART", name));
         #endif
     }
 }

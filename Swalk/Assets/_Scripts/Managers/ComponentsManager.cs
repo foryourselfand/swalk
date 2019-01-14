@@ -48,7 +48,7 @@ public class ComponentsManager : MonoBehaviour
 
         startButtons[startButtons.Length - 1].SetTargetFromStart(new Vector2(1, 0));
 
-        Invoke("TestFunc", 3F);
+        Invoke("TestFunc", 3);
     }
 
     public void TestFunc()

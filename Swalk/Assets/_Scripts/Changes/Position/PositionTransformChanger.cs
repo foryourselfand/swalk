@@ -4,19 +4,23 @@ public class PositionTransformChanger : PositionChanger
 {
     private Transform _transformLink;
 
-    private void Awake()
+    protected override void DefineTransform()
     {
         _transformLink = GetComponent<Transform>();
     }
 
     protected override void DefineScale()
     {
-//        Debug.Log(string.Format("{2} {0} {1}", _transformLink.localScale.x.ToString(),
-//            _transformLink.localScale.z.ToString(), name));
+        Width = _transformLink.localScale.x;
+        Height = _transformLink.localScale.z;
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("{0}\tW:{1} H:{2}", name, Width.ToString(), Height.ToString()));
+        #endif
     }
 
-    protected override void setLink(Vector2 value)
+    protected override void SetTransformLink(Vector2 value)
     {
-        _transformLink.position = new Vector3(value.x, _transformLink.position.y, value.y);
+        _transformLink.localPosition = new Vector3(value.x, _transformLink.localPosition.y, value.y);
     }
 }
