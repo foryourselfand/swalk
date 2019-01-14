@@ -2,11 +2,11 @@ using UnityEngine;
 
 public abstract class PositionChanger : Changer
 {
-    protected Vector2 _targetVector;
-
-    protected Vector2 _positionLink;
+    #region Vectors
 
     private Vector2 _startPosition;
+    private Vector2 _targetVector;
+    private Vector2 _positionLink;
 
     public Vector2 PositionLink
     {
@@ -18,22 +18,35 @@ public abstract class PositionChanger : Changer
         }
     }
 
+    #endregion
+
     private float lastX, lastY;
+
+    #region SmoothMovement
 
     private float lerpTime;
 
     private bool fromSlowToFast;
 
+    #endregion
+
     private void Start()
     {
         _startPosition = _positionLink;
+        DefineScale();
     }
+
+    protected abstract void DefineScale();
 
     public void SetTarget(Vector2 target)
     {
         changing = true;
         lastX = target.x;
         lastY = target.y;
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("Position\t{0}\tSTART", name));
+        #endif
     }
 
     public void SetTargetFromStart(Vector2 target)
@@ -63,12 +76,15 @@ public abstract class PositionChanger : Changer
 
     protected override void ActionOnEnd()
     {
-        Debug.Log(string.Format("///{0} position///", name));
         PositionLink = _targetVector;
         fromSlowToFast = !fromSlowToFast;
         lerpTime = 0;
-    }
 
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("Position\t{0}\tEND", name));
+        #endif
+    }
 
     protected override bool CheckWithTolerance()
     {

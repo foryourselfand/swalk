@@ -21,6 +21,10 @@ public class OpacityChanger : Changer
     {
         changing = true;
         _targetAlpha = targetOpacity;
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("Opacity\t{0}\tSTART", name));
+        #endif
     }
 
     protected override bool CheckWithTolerance()
@@ -35,9 +39,13 @@ public class OpacityChanger : Changer
 
     protected override void ActionOnEnd()
     {
-        Debug.Log(string.Format("{0} opacity", name));
         _canvasGroupLink.alpha = _targetAlpha;
         if (_targetAlpha == 0)
             gameObject.SetActive(false);
+
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("Opacity\t{0}\tEND", name));
+        #endif
     }
 }

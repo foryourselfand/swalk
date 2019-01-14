@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class ComponentsManager : MonoBehaviour
 {
-    public OpacityChanger startButtonsGroup;
+    #region UI Groups
 
-    public PositionChanger middleButton;
+    [SerializeField] private OpacityChanger startButtonsGroup;
+
+    #endregion
+
+    [SerializeField] private PositionChanger middleButton;
 
     private PositionChanger[] startButtons;
 
@@ -30,7 +34,7 @@ public class ComponentsManager : MonoBehaviour
         startButtonsGroup.SetOpacityTarget(1);
 
 
-        middleButton.SetTargetFromStart(new Vector2(0, 2.5f));
+        middleButton.SetTargetFromStart(new Vector2(0, 1f));
 
 
         startButtons[0].SetTargetFromStart(new Vector2(-1, 0));
