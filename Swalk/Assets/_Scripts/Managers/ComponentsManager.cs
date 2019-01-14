@@ -3,6 +3,7 @@ using UnityEngine;
 public class ComponentsManager : MonoBehaviour
 {
     public OpacityChanger startButtonsGroup;
+
     public PositionChanger middleButton;
 
     private PositionChanger[] startButtons;
@@ -17,7 +18,7 @@ public class ComponentsManager : MonoBehaviour
 
     private void Start()
     {
-        //DeActivate ALL UI
+        //DEACTIVATE ALL UI
         startButtonsGroup.gameObject.SetActive(false);
 
         StartAction();
@@ -29,29 +30,36 @@ public class ComponentsManager : MonoBehaviour
         startButtonsGroup.SetOpacityTarget(1);
 
 
-        middleButton.SetVectorTarget(new Vector2(0, 2), true);
+        middleButton.SetTargetFromStart(new Vector2(0, 2.5f));
 
 
-        startButtons[0].SetVectorTarget(new Vector2(-1, 0), true);
+        startButtons[0].SetTargetFromStart(new Vector2(-1, 0));
 
         var temp = Random.Range(0, 2) == 0 ? 1 : -1;
         for (var i = 1; i < startButtons.Length - 1; i++)
         {
-            startButtons[i].SetVectorTarget(new Vector2(0, temp), true);
+            startButtons[i].SetTargetFromStart(new Vector2(0, temp));
             temp *= -1;
         }
 
-        startButtons[startButtons.Length - 1].SetVectorTarget(new Vector2(1, 0), true);
+        startButtons[startButtons.Length - 1].SetTargetFromStart(new Vector2(1, 0));
 
         Invoke("TestFunc", 3F);
     }
 
     public void TestFunc()
     {
-        middleButton.SetClockwiseTarget();
-        startButtons[0].SetClockwiseTarget();
+        middleButton.SetPreviousTarget();
 
-        startButtons[startButtons.Length - 1].SetClockwiseTarget();
+
+        startButtons[0].SetPreviousTarget();
+
+        for (var i = 1; i < startButtons.Length - 1; i++)
+            startButtons[i].SetContinuingTarget();
+
+        startButtons[startButtons.Length - 1].SetPreviousTarget();
+
+
         startButtonsGroup.SetOpacityTarget(0);
     }
 }
