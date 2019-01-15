@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButtonsGroup: {fileID: 1503540165}
-  middleButton: {fileID: 1803740718}
+  camera: {fileID: 534669906}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0
@@ -643,6 +643,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -710,6 +711,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680d77038b0a474e93d38dc418b4b915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  multiplier: 10
 --- !u!1 &596767470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  multiplier: 1
+  multiplier: 0.5
 --- !u!1 &1036230130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  multiplier: 1
+  multiplier: 0.5
 --- !u!1 &1668774999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  multiplier: 1
+  multiplier: 0.5
 --- !u!1 &1803740713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  multiplier: 1
+  multiplier: 0.5
 --- !u!1 &1913710838
 GameObject:
   m_ObjectHideFlags: 0

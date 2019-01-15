@@ -8,7 +8,7 @@ public class ComponentsManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private PositionChanger middleButton;
+    [SerializeField] private PositionChanger camera;
 
     private PositionChanger[] startButtons;
 
@@ -34,7 +34,7 @@ public class ComponentsManager : MonoBehaviour
         startButtonsGroup.SetOpacityTarget(1);
 
 
-        middleButton.SetTargetFromStart(new Vector2(0, 1f));
+        camera.SetTargetFromStart(new Vector2(0, 1f));
 
 
         startButtons[0].SetTargetFromStart(new Vector2(-1, 0));
@@ -53,7 +53,7 @@ public class ComponentsManager : MonoBehaviour
 
     public void TestFunc()
     {
-        middleButton.SetPreviousTarget();
+        camera.SetPreviousTarget();
 
 
         startButtons[0].SetPreviousTarget();

@@ -4,9 +4,15 @@ public class PositionTransformChanger : PositionChanger
 {
     private Transform _transformLink;
 
+    private void Start()
+    {
+    }
+
     protected override void DefineTransform()
     {
         _transformLink = GetComponent<Transform>();
+        _startPosition = new Vector2(_transformLink.position.x, _transformLink.position.z);
+        Debug.Log(string.Format("{0} {1}", name, _startPosition.ToString()));
     }
 
     protected override void DefineScale()

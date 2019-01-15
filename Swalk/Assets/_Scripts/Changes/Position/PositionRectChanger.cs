@@ -4,9 +4,15 @@ public class PositionRectChanger : PositionChanger
 {
     private RectTransform _rectLink;
 
+    private void Start()
+    {
+    }
+
     protected override void DefineTransform()
     {
         _rectLink = GetComponent<RectTransform>();
+        _startPosition = _rectLink.anchoredPosition;
+        Debug.Log(string.Format("{0} {1}", name, _rectLink.anchoredPosition.ToString()));
     }
 
     protected override void DefineScale()

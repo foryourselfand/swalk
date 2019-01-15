@@ -6,7 +6,8 @@ public abstract class PositionChanger : Changer
 
     #region VAR_VECTORS(CHANGER)
 
-    private Vector2 _startPosition;
+    private Vector2 _target;
+    protected Vector2 _startPosition;
     private Vector2 _positionLink;
 
     public Vector2 PositionLink
@@ -18,8 +19,6 @@ public abstract class PositionChanger : Changer
             SetTransformLink(_positionLink);
         }
     }
-
-    private Vector2 _target;
 
     #endregion
 
@@ -46,10 +45,10 @@ public abstract class PositionChanger : Changer
         DefineScale();
     }
 
-    private void Start()
-    {
-        _startPosition = _positionLink;
-    }
+//    private void Start()
+//    {
+//        _startPosition = PositionLink;
+//    }
 
     protected abstract void DefineTransform();
     protected abstract void DefineScale();
@@ -67,8 +66,6 @@ public abstract class PositionChanger : Changer
 
     protected override void Change(float t)
     {
-        //PositionLink = Vector2.SmoothDamp(PositionLink, _targetVector, ref velocity, 0.1f * speed); //private Vector2 velocity = Vector2.zero;//
-
         if (_fromSlowToFast)
             _lerpTime += Time.deltaTime / speed;
         else
