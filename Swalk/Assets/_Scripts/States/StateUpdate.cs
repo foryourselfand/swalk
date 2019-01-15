@@ -6,7 +6,7 @@ public class StateUpdate : MonoBehaviour
     {
         switch (GameManager.CURRENT_STATE)
         {
-            case GameState.STARTING:
+            case GameState.Starting:
 
                 break;
         }

@@ -6,27 +6,27 @@ public class StateClicker : MonoBehaviour, _Clickable
     {
         switch (GameManager.CURRENT_STATE)
         {
-            case GameState.STARTING:
+            case GameState.Starting:
                 Debug.Log("StateClicker Starting");
 
                 break;
 
-            case GameState.MENU:
+            case GameState.Menu:
 
                 Debug.Log("StateClicker MENU");
                 break;
 
-            case GameState.TOPIC:
+            case GameState.Topic:
 
                 Debug.Log("StateClicker TOPIC");
                 break;
 
-            case GameState.PLAY:
+            case GameState.Play:
 
                 Debug.Log("StateClicker PLAY");
                 break;
 
-            case GameState.OVER:
+            case GameState.Over:
 
                 Debug.Log("StateClicker OVER");
                 break;

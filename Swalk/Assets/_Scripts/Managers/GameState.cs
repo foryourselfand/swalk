@@ -1,10 +1,10 @@
 public enum GameState
 {
-    STARTING,
-    MENU,
-    TOPIC,
-    PLAY,
-    ADS,
-    OVER,
-    ENDING
+    Starting,
+    Menu,
+    Topic,
+    Play,
+    Ads,
+    Over,
+    Ending
 }

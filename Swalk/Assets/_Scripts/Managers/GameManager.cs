@@ -6,6 +6,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CURRENT_STATE = GameState.STARTING;
+        CURRENT_STATE = GameState.Starting;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PositionTransformChanger : PositionChanger
+public class PositionTransform : PositionChanger
 {
     private Transform _transformLink;
 

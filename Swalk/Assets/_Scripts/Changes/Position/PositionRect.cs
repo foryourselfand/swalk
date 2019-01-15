@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PositionRectChanger : PositionChanger
+public class PositionRect : PositionChanger
 {
     private RectTransform _rectLink;
 

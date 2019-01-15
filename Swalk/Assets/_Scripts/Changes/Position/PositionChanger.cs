@@ -4,6 +4,8 @@ public abstract class PositionChanger : Changer
 {
     [SerializeField] private float multiplier;
 
+    [SerializeField] private ChangeType changeType;
+
     #region VAR_VECTORS(CHANGER)
 
     private Vector2 _target;
@@ -24,9 +26,46 @@ public abstract class PositionChanger : Changer
 
     #region VAR_SMOOTH_MOVEMENT
 
-    private float _lerpTime;
+    private static float _lerpTime;
 
-    private bool _fromSlowToFast;
+    private static bool _fromSlowToFast;
+
+    private static Vector2 _velocity = Vector2.one;
+
+    #endregion
+
+    #region DELEGATES(Change Actions)
+
+    private delegate Vector2 ChangeAction(Vector2 current, Vector2 target, float speed, float t);
+
+    private ChangeAction _changeAction;
+
+    private static Vector2 SpecialSmoothAction(Vector2 current, Vector2 target, float speed, float t)
+    {
+        if (_fromSlowToFast)
+            _lerpTime += t / speed;
+        else
+            _lerpTime = t * speed;
+
+        return Vector2.Lerp(current, target, _lerpTime);
+    }
+
+    private static Vector2 DefaultSmoothAction(Vector2 current, Vector2 target, float speed, float t)
+    {
+        return Vector2.SmoothDamp(current, target, ref _velocity, speed * t * 10f);
+    }
+
+    private static Vector2 SharpAction(Vector2 current, Vector2 target, float speed, float t)
+    {
+        return Vector2.MoveTowards(current, target, speed * t * 5);
+    }
+
+    private enum ChangeType
+    {
+        SpecialSmooth,
+        DefaultSmooth,
+        Sharp
+    }
 
     #endregion
 
@@ -44,6 +83,19 @@ public abstract class PositionChanger : Changer
         DefineTransform();
         DefineScale(ref _width, ref _height);
         DefineStartPosition(ref _startPosition);
+
+        switch (changeType)
+        {
+            case ChangeType.SpecialSmooth:
+                _changeAction = SpecialSmoothAction;
+                break;
+            case ChangeType.DefaultSmooth:
+                _changeAction = DefaultSmoothAction;
+                break;
+            case ChangeType.Sharp:
+                _changeAction = SharpAction;
+                break;
+        }
     }
 
     protected abstract void DefineTransform();
@@ -63,12 +115,7 @@ public abstract class PositionChanger : Changer
 
     protected override void Change(float t)
     {
-        if (_fromSlowToFast)
-            _lerpTime += Time.deltaTime / speed;
-        else
-            _lerpTime = Time.deltaTime * speed;
-
-        PositionLink = Vector2.Lerp(PositionLink, _target, _lerpTime);
+        PositionLink = _changeAction(PositionLink, _target, Speed, t);
     }
 
     protected override void ActionOnEnd()

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Changer : MonoBehaviour
 {
-    [SerializeField] protected float speed;
+    [SerializeField] [Range(1, 10)] protected float Speed;
 
     protected bool Changing;
 
@@ -12,7 +12,7 @@ public abstract class Changer : MonoBehaviour
 
         if (CheckWithTolerance())
         {
-            Change(speed * Time.deltaTime);
+            Change(Time.deltaTime);
         }
         else
         {

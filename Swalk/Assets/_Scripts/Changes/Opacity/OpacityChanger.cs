@@ -24,9 +24,9 @@ public class OpacityChanger : Changer
         return Math.Abs(_canvasGroupLink.alpha - _targetAlpha) > 0.01f;
     }
 
-    protected override void Change(float time)
+    protected override void Change(float t)
     {
-        _canvasGroupLink.alpha = Mathf.MoveTowards(_canvasGroupLink.alpha, _targetAlpha, time);
+        _canvasGroupLink.alpha = Mathf.MoveTowards(_canvasGroupLink.alpha, _targetAlpha, Speed * t);
     }
 
     protected override void ActionOnEnd()
