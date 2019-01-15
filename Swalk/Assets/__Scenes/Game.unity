@@ -472,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04ad7ba263a48b78b2f4a0e0c509f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButtonsGroup: {fileID: 1503540165}
-  camera: {fileID: 534669906}
+  _startButtonsGroup: {fileID: 1503540165}
+  _camera: {fileID: 534669906}
 --- !u!4 &438813028
 Transform:
   m_ObjectHideFlags: 0

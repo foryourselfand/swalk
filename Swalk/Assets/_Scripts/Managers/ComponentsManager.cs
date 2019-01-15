@@ -4,66 +4,66 @@ public class ComponentsManager : MonoBehaviour
 {
     #region UI Groups
 
-    [SerializeField] private OpacityChanger startButtonsGroup;
+    [SerializeField] private OpacityChanger _startButtonsGroup;
 
     #endregion
 
-    [SerializeField] private PositionChanger camera;
+    [SerializeField] private PositionChanger _camera;
 
-    private PositionChanger[] startButtons;
+    private PositionChanger[] _startButtons;
 
     private void Awake()
     {
-        var parent = startButtonsGroup.transform;
-        startButtons = new PositionChanger[parent.childCount];
+        var parent = _startButtonsGroup.transform;
+        _startButtons = new PositionChanger[parent.childCount];
         for (var i = 0; i < parent.childCount; i++)
-            startButtons[i] = parent.GetChild(i).GetComponent<PositionChanger>();
+            _startButtons[i] = parent.GetChild(i).GetComponent<PositionChanger>();
     }
 
     private void Start()
     {
         //DEACTIVATE ALL UI
-        startButtonsGroup.gameObject.SetActive(false);
+        _startButtonsGroup.gameObject.SetActive(false);
 
         StartAction();
     }
 
     private void StartAction()
     {
-        startButtonsGroup.gameObject.SetActive(true);
-        startButtonsGroup.SetOpacityTarget(1);
+        _startButtonsGroup.gameObject.SetActive(true);
+        _startButtonsGroup.SetOpacityTarget(1);
 
 
-        camera.SetTargetFromStart(new Vector2(0, 1f));
+        _camera.SetTargetFromStart(new Vector2(1, 0));
 
 
-        startButtons[0].SetTargetFromStart(new Vector2(-1, 0));
+        _startButtons[0].SetTargetFromStart(new Vector2(-1, 0));
 
         var temp = Random.Range(0, 2) == 0 ? 1 : -1;
-        for (var i = 1; i < startButtons.Length - 1; i++)
+        for (var i = 1; i < _startButtons.Length - 1; i++)
         {
-            startButtons[i].SetTargetFromStart(new Vector2(0, temp));
+            _startButtons[i].SetTargetFromStart(new Vector2(0, temp));
             temp *= -1;
         }
 
-        startButtons[startButtons.Length - 1].SetTargetFromStart(new Vector2(1, 0));
+        _startButtons[_startButtons.Length - 1].SetTargetFromStart(new Vector2(1, 0));
 
         Invoke("TestFunc", 3);
     }
 
     public void TestFunc()
     {
-        camera.SetPreviousTarget();
+        _camera.SetTargetFromCurrent(new Vector2(0, 1));
 
 
-        startButtons[0].SetPreviousTarget();
+        _startButtons[0].SetPreviousTarget();
 
-        for (var i = 1; i < startButtons.Length - 1; i++)
-            startButtons[i].SetContinuingTarget();
+        for (var i = 1; i < _startButtons.Length - 1; i++)
+            _startButtons[i].SetContinuingTarget();
 
-        startButtons[startButtons.Length - 1].SetPreviousTarget();
+        _startButtons[_startButtons.Length - 1].SetPreviousTarget();
 
 
-        startButtonsGroup.SetOpacityTarget(0);
+        _startButtonsGroup.SetOpacityTarget(0);
     }
 }
