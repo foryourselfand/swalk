@@ -7,7 +7,7 @@ public abstract class PositionChanger : Changer
     #region VAR_VECTORS(CHANGER)
 
     private Vector2 _target;
-    protected Vector2 _startPosition;
+    private Vector2 _startPosition;
     private Vector2 _positionLink;
 
     public Vector2 PositionLink
@@ -32,26 +32,23 @@ public abstract class PositionChanger : Changer
 
     #region VAR_OTHER
 
-    protected float Width, Height;
+    private float _width, _height;
     private float _lastX, _lastY;
 
     #endregion
 
-    #region DEFINING(AWAKE&START)
+    #region DEFINING
 
     private void Awake()
     {
         DefineTransform();
-        DefineScale();
+        DefineScale(ref _width, ref _height);
+        DefineStartPosition(ref _startPosition);
     }
 
-//    private void Start()
-//    {
-//        _startPosition = PositionLink;
-//    }
-
     protected abstract void DefineTransform();
-    protected abstract void DefineScale();
+    protected abstract void DefineScale(ref float width, ref float height);
+    protected abstract void DefineStartPosition(ref Vector2 startPosition);
 
     #endregion
 
@@ -88,9 +85,11 @@ public abstract class PositionChanger : Changer
 
     #endregion
 
+    #region FUNCTIONALITY
+
     private Vector2 GetMultiplyTarget(Vector2 originalTarget)
     {
-        return new Vector2(originalTarget.x * Width * multiplier, originalTarget.y * Height * multiplier);
+        return new Vector2(originalTarget.x * _width * multiplier, originalTarget.y * _height * multiplier);
     }
 
     public void SetTarget(Vector2 target)
@@ -126,4 +125,6 @@ public abstract class PositionChanger : Changer
     {
         SetTargetFromCurrent(new Vector2(-_lastX, -_lastY));
     }
+
+    #endregion
 }

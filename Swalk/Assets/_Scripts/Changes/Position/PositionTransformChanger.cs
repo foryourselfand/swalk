@@ -4,24 +4,27 @@ public class PositionTransformChanger : PositionChanger
 {
     private Transform _transformLink;
 
-    private void Start()
-    {
-    }
-
     protected override void DefineTransform()
     {
         _transformLink = GetComponent<Transform>();
-        _startPosition = new Vector2(_transformLink.position.x, _transformLink.position.z);
-        Debug.Log(string.Format("{0} {1}", name, _startPosition.ToString()));
     }
 
-    protected override void DefineScale()
+    protected override void DefineScale(ref float width, ref float height)
     {
-        Width = _transformLink.localScale.x;
-        Height = _transformLink.localScale.z;
+        width = _transformLink.localScale.x;
+        height = _transformLink.localScale.z;
 
         #if DEBUG_PRINT
-        Debug.Log(string.Format("{0}\tW:{1} H:{2}", name, Width.ToString(), Height.ToString()));
+        Debug.Log(string.Format("N:{0}\tW:{1} H:{2}", name, Width.ToString(), Height.ToString()));
+        #endif
+    }
+
+    protected override void DefineStartPosition(ref Vector2 startPosition)
+    {
+        startPosition = new Vector2(_transformLink.localPosition.x, _transformLink.localPosition.z);
+
+        #if DEBUG_PRINT
+        Debug.Log(string.Format("N:{0}\tSP:{1}", name, startPosition.ToString()));
         #endif
     }
 
